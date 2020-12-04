@@ -58,7 +58,7 @@ def is_hex_code(string):
 
 def better_validate(document):
     valid = 0
-    eye_colors = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
+    eye_colors = {"amb", "blu", "brn", "gry", "grn", "hzl", "oth"}
     for item, value in document.items():
         if value != None:
             valid += item == "byr" and value.isnumeric() and len(value) == 4 and 1920 <= int(value) <= 2002
