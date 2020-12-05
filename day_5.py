@@ -14,11 +14,11 @@ def generate_seats(data):
     return seat_ids
 
 
-def get_max_seat_id(seats):
-    print("Maximum seat", max(seats))
-    print("Minimum seat", min(seats))
-    [print("Your seat", x)
-     for x in range(min(seats), max(seats)) if x not in seats]
+def get_min_max_your_seat(seats):
+    maximum = max(seats)
+    minimum = min(seats)
+    possible_seats = {x for x in range(minimum, maximum) if x not in seats}
+    print(maximum, minimum, possible_seats)
 
 
-get_max_seat_id(generate_seats(data))
+get_min_max_your_seat(generate_seats(data))
