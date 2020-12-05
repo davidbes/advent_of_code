@@ -17,7 +17,7 @@ def generate_seats(data):
 def get_min_max_your_seat(seats):
     maximum = max(seats)
     minimum = min(seats)
-    possible_seats = {x for x in range(minimum, maximum) if x not in seats}
+    possible_seats = {x for x in range(minimum, maximum + 1) if x not in seats}
     print(maximum, minimum, possible_seats)
 
 
