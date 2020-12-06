@@ -14,6 +14,10 @@ def generate_seats(data):
     return seat_ids
 
 
+def generate_seats_oneliner(data):
+    return {int((seat.replace("F", "0").replace("B", "1").replace("L", "0").replace("R", "1")), 2) for seat in data}
+
+
 def get_min_max_your_seat(seats):
     maximum = max(seats)
     minimum = min(seats)
