@@ -49,7 +49,6 @@ def get_amount_of_baggs(bag, rules):
         if count != 0:
             amount += count
             amount += count * get_amount_of_baggs(rule, rules)
-
     return amount
 
 
