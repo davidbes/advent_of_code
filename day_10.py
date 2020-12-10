@@ -16,6 +16,8 @@ def get_most_adapters_fact(data):
 print(get_most_adapters_fact(data))
 
 
+# I do not count this as my solution as I cheated off of somebody :)
+# My knowledge of recursion is inferior. I solved for 2 shorter versions... but when I tried to input big data... let's just say I could go for a 2 week vacation.
 def recursive_counter(dictionary, value, cache):
     all_counter = 0
     if value in cache:
