@@ -119,18 +119,3 @@ def move_by_waypointing_two(instructions):
 print(move_by_instructions(data))
 print(move_by_waypointing(data))
 print(move_by_waypointing_two(data))
-
-iteracije = 0
-n = 10000
-i = n
-while i > 0:
-    i = i/2
-    j = 1
-    while j < n:
-        j = j * 2
-        k = 0
-        while k < n:
-            k = k + 4
-            iteracije += 1
-
-print(iteracije)
