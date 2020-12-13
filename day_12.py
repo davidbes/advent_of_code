@@ -1,3 +1,5 @@
+from math import cos, sin, radians
+
 data = [(x.strip()[:1], int(x.strip()[1:]))
         for x in open("inputs/day_12.txt")]
 
@@ -51,7 +53,6 @@ def move_by_instructions(instructions):
 
 # Action F means to move forward to the waypoint a number of times equal to the given value.
 def move_by_waypointing(instructions):
-
     directions = {
         "N": (0, 1),
         "S": (0, -1),
@@ -84,5 +85,52 @@ def move_by_waypointing(instructions):
     return abs(ship_pos_e) + abs(shop_pos_n)
 
 
+def move_by_waypointing_two(instructions):
+    directions = {
+        "N": (0, 1),
+        "S": (0, -1),
+        "E": (1, 0),
+        "W": (-1, 0),
+    }
+
+    ship_pos_e, shop_pos_n = (0, 0)
+    wp_e, wp_n = (10, 1)
+
+    for direction, value in instructions:
+        # This moves ship
+        if direction == "F":
+            ship_pos_e += value * wp_e
+            shop_pos_n += value * wp_n
+        # Moves waypoint by this coords
+        elif direction in directions:
+            multiplier_e, multiplier_n = directions[direction]
+            wp_e += multiplier_e * value
+            wp_n += multiplier_n * value
+        # Rotate waypoint
+        elif direction in {"R", "L"}:
+            angle = radians(value if direction == "L" else 360-value)
+            new_rad_e = round(cos(angle) * wp_e) - round(wp_n * sin(angle))
+            new_rad_n = round(sin(angle) * wp_e) + round(wp_n * cos(angle))
+            wp_e, wp_n = new_rad_e, new_rad_n
+
+    return abs(ship_pos_e) + abs(shop_pos_n)
+
+
 print(move_by_instructions(data))
 print(move_by_waypointing(data))
+print(move_by_waypointing_two(data))
+
+iteracije = 0
+n = 10000
+i = n
+while i > 0:
+    i = i/2
+    j = 1
+    while j < n:
+        j = j * 2
+        k = 0
+        while k < n:
+            k = k + 4
+            iteracije += 1
+
+print(iteracije)
